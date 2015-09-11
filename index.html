@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<body>
+<a href="https://docs.google.com/forms/d/1dAWYLEs1oO2qsv2PYK4pPKrQrqhKgq4jfePj3GgPyVQ/viewform" target=_blank>Add a resolution</a>
+<form>
+<p> Select desired filters then click update to reveal a random resolution! </p>
+Difficulty: 
+<select id="difficulty">
+	<option>Any difficulty</option>
+	<option>Easy</option>
+	<option>Hard</option>
+</select>
+
+Type:
+<select id="type">
+	<option>All types</option>
+	<option>International Relations</option>
+	<option>Economics and Environment</option>
+	<option>Religion</option>
+	<option>Feminism and Social Movements</option>
+	<option>Politics and the Legal System</option>
+	<option>Rights</option>
+	<option>Other</option>
+</select>
+<input type="button" onclick="update()" value="Update">
+</form>
+<ul id="resolutions"></ul>	
+<p id="resolution"></p>
+<script>
+//	Global variables to represent resolution types
+	var IR = "International Relations";
+	var ECONENVIRONMENT = "Economics and Environment";
+	var RELIGION = "Religion";
+	var FEMINISM = "Feminism and Social Movements";
+	var POLITICS = "Politics and the Legal System";
+	var RIGHTS = "Rights";
+	var OTHER = "Other";
+	var ALL = "All types";
+	
+//	Global variables for resolution difficulty
+	var EASY = "Easy";
+	var HARD = "Hard";
+	var ANY = "Any difficulty";
+	
+// Current filter values ");
+	var type = ALL;
+	var difficulty = ANY;
+		
+	function Resolution(text, difficulty, type)
+	{
+		this.text = text;
+		this.difficulty = difficulty;
+		this.type = type;
+	}
+	
+	var addToList = function(text)
+	{
+		var node = document.createElement("li");
+		var textNode = document.createTextNode(text);
+		node.appendChild(textNode);
+		document.getElementById("resolutions").appendChild(node);
+	}
+	
+	var addRes = function(text, difficulty, type)
+	{
+		resolutions[resolutions.length] = new Resolution(text, difficulty, type);
+	}
+	
+	var resolutions = [];
+	addRes("THBT the international community should cut off internet access in Syria", HARD, IR);
+	addRes("THW prohibit the media from reporting on the mental illness of those accused of crimes", HARD, POLITICS);
+	addRes("THBT developing countries should adopt economic development policies that heavily disincentivise urbanisation", HARD, ECONENVIRONMENT);
+	addRes("TH regrets the decline of tightly integrated families", HARD, OTHER);
+	addRes("THBT Japan should acquire nuclear weapons", HARD, IR);
+	addRes("THW only imprison individuals who pose a direct and continuing threat to society", EASY, POLITICS);
+	addRes("THW create a permanent site for the olympics", EASY, IR);
+	addRes("THW Ban all forms of advertisement", EASY, ECONENVIRONMENT);
+	addRes("THS Nationalism", HARD, OTHER);
+	addRes("THW Eliminate the plea bargain", EASY, POLITICS);
+	
+//	Resolutions from Google doc
+
+//	EASY
+	addRes("THW relaunch the war against the Islamic State", EASY, IR);
+	addRes("THW create a permanent site for the olympics", EASY, IR);
+	addRes("THW ban countries with human rights violations to host the olympic games", EASY, IR);
+	addRes("THS independence for Quebec", EASY, IR);
+	addRes("THBT Taiwan should declare independence now", EASY, IR);
+	addRes("THW sacrifice economic growth for the good of the environment", EASY, ECONENVIRONMENT);
+	addRes("THBT environmentalists should launch a campaign of sabotage and property destruction aimed at major polluting companies", EASY, ECONENVIRONMENT);
+	addRes("THW rather use its resources to adapt to climate change than to prevent it", EASY, ECONENVIRONMENT);
+	addRes("THW Mandate recycling Programs in developing countries", EASY, ECONENVIRONMENT);
+	addRes("THW apply universal jurisdiction to crimes against the environment", EASY, ECONENVIRONMENT);
+	addRes("THW not allow religious communities to expel members for violating doctrinal teachings", EASY, RELIGION);
+	addRes("THBT organized religion is bad", EASY, RELIGION);
+	addRes("THW ban government funding of religious schools", EASY, RELIGION);
+	addRes("THBT the right to free speech does not extend to offending religion", EASY, RELIGION);
+	addRes("THBT religious organizations should pay taxes on donations received and assets owned", EASY, RELIGION);
+	addRes("THW ban all forms of pornography", EASY, FEMINISM);
+	addRes("THW ban prostitution", EASY, FEMINISM);
+	addRes("THS radical feminism", EASY, FEMINISM);
+	addRes("THBT separate sports competitions for women harm the feminist cause", EASY, FEMINISM);
+	addRes("THBT feminism should give way to multiculturalism", EASY, FEMINISM);
+	addRes("THW hold all vehicle passengers legally accountable for impaired drivers", EASY, POLITICS);
+	addRes("THW allow a prisoner to choose between life in prison or the death sentence", EASY, POLITICS);
+	addRes("THW legalize the sale of human organs", EASY, POLITICS);
+	addRes("THW have harsher sentences for celebrity criminals", EASY, POLITICS);
+	addRes("THW Prioritise Organ Donations To Those Who Have Lived a Healthy Lifestyle", EASY, POLITICS);
+	addRes("THW Legalize animal brothels ", EASY, RIGHTS);
+	addRes("THW ban animal testing", EASY, RIGHTS);
+	addRes("THW require doctors to report all cases of suspected domestic violence", EASY, RIGHTS);
+	addRes("THBT the gay rights movement should not support the institution of marriage", EASY, RIGHTS);
+	addRes("THBT there is no such thing as universal human rights", EASY, RIGHTS);
+	addRes("THW ban homework", EASY, OTHER);
+	addRes("THW allow parents to genetically enhance their children", EASY, OTHER);
+	addRes("THW kill a crying baby to save a group of hiding villagers", EASY, OTHER);
+	addRes("THW Kill a mad king to save a city ", EASY, OTHER);
+	addRes("THW take student feedback into account when promoting faculty members", EASY, OTHER);
+	
+//	HARD
+	addRes("THW give nuclear weapons to smaller countries", HARD, IR);
+	addRes("THW expand the UN security council", HARD, IR);
+	addRes("THW withdraw the right to veto the accession of new members to EU", HARD, IR);
+	addRes("THBT the EU should open its doors to North Africa", HARD, IR);
+	addRes("THS The Creation Of An Independent State For The Iraqi Kurds", HARD, IR);
+	addRes("THW hold the accountants accountable", HARD, ECONENVIRONMENT);
+	addRes("THW abolish income tax", HARD, ECONENVIRONMENT);
+	addRes("THBT environmentalism in the Third World is the responsibility of the First World", HARD, ECONENVIRONMENT);
+	addRes("THW require people to work in return for welfare payments", HARD, ECONENVIRONMENT);
+	addRes("THW make indigenous communities exempt from laws pertaining to environmental protection", HARD, ECONENVIRONMENT);
+	addRes("If a button could end all religion, THW press the button", HARD, RELIGION);
+	addRes("TH, as an atheist, would proselytize ", HARD, RELIGION);
+	addRes("THBT we should prevent parents from raising their children in a particular religious faith", HARD, RELIGION);
+	addRes("THBT celebrating catholic religious holidays as national holidays discriminates other religions", HARD, RELIGION);
+	addRes("TH celebrates the role of organized religion in attaining equality", HARD, RELIGION);
+	addRes("THW allow pro-life organizations to offer to pay women considering abortions to carry the baby to term (assuming adequate child support services exist)", HARD, FEMINISM);
+	addRes("THBT developing nations should adopt western feminism", HARD, FEMINISM);
+	addRes("THBT feminists should oppose restrictions on the wearing of the burkha and the hijab", HARD, FEMINISM);
+	addRes("THBT feminist political activists should form a separate political party based on feminist ideology, rather than joining existing parties", HARD, FEMINISM);
+	addRes("THBT the feminist movement should condemn celebrities (like Rihanna) who choose to continue to pursue a personal relationship with abusive partners", HARD, FEMINISM);
+	addRes("THW make organ donation compulsory", HARD, RIGHTS);
+	addRes("THW use the education system to instill moral norms in children beyond mere obedience to the law", HARD, RIGHTS);
+	addRes("THBT the gay rights movement should oppose gay marriage", HARD, RIGHTS);
+	addRes("THW abolish all laws prohibiting cruelty to animals", HARD, RIGHTS);
+	addRes("THW ban Cosmetic Surgery", HARD, RIGHTS);
+	addRes("THW clone human beings", HARD, OTHER);
+	addRes("THW censor all Nazi and Soviet symbols", HARD, OTHER);
+	addRes("THW allow the use of torture", HARD, OTHER);
+	addRes("THBT new migrants wishing to become citizens should be required to pass a language and values test", HARD, OTHER);
+	addRes("THBT flag burning should not be a crime", HARD, OTHER);	
+	
+	var randomizeRes = function()
+	{
+		document.getElementById("resolutions").innerHTML = " ";
+		var text = " ";
+		var reses = [];
+		
+		if (type == ALL)
+		{
+			if(difficulty == ANY)
+			{
+				for (i = 0; i < resolutions.length; i ++)
+				{
+					reses[reses.length] = resolutions[i].text;
+				}
+			}
+			else
+			{
+				for (i = 0; i < resolutions.length; i ++)
+				{
+					if(resolutions[i].difficulty == difficulty)
+					{
+						reses[reses.length] = resolutions[i].text;
+					}
+				}
+			}
+		}
+		else if (difficulty == ANY)
+		{
+			for (i = 0; i < resolutions.length; i ++)
+			{
+				if(resolutions[i].type == type)
+				{
+					reses[reses.length] = resolutions[i].text;
+				}
+			}
+		}
+		else
+		{
+			for (i = 0; i < resolutions.length; i ++)
+			{
+				if(resolutions[i].type == type && resolutions[i].difficulty == difficulty)
+				{
+					reses[reses.length] = resolutions[i].text;
+				}
+			}
+		}
+		document.getElementById("resolution").innerHTML = reses[Math.floor(Math.random()*reses.length)];
+	}
+	
+	var update = function()
+	{
+		var obj = document.getElementById("difficulty");
+		difficulty = obj.options[obj.selectedIndex].text;
+		obj = document.getElementById("type");
+		type = obj.options[obj.selectedIndex].text;
+		randomizeRes();
+	}
+	
+</script>
+</body>
+</html>
